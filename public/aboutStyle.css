@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.about-card {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.about-card .text-section {
+    flex: 1;
+    padding: 20px;
+}
+
+.about-card .text-section h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.about-card .text-section p {
+    margin-bottom: 15px;
+    color: #d3d3d3;
+}
+
+.about-card .text-section .sosmed-horizontal a {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.about-card .text-section .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(0, 106, 255);
+    border: none;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    a{
+        color: white;
+
+    }:visited{
+        color: white;
+    }
+}
+
+.about-card .image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.about-card .image-section img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .about-card {
+        flex-direction: column;
+    }
+
+    .about-card .text-section,
+    .about-card .image-section {
+        text-align: center;
+    }
+}

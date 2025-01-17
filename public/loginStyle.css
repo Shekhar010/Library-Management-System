@@ -1,0 +1,34 @@
+body{
+    background-color: black;
+    color: white;
+}
+#navBar{
+    display: flex;
+    justify-content: space-between;
+}
+
+#navBar ul{
+    display: flex;
+    list-style: none;
+}
+#loginContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#loginContainer{
+    .form-floating{
+        margin: 10px;
+        .form-control{
+            background-color: black;
+            color: white;
+        }
+    }
+}
+
+#register-alert{
+    padding: 10px;
+}

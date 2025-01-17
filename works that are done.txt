@@ -1,0 +1,78 @@
+works that are done 
+front-end of the website is developed using the html css and java script 
+-> home page (display the books) will contain the login button register button 
+-> login page(will have two roles user and admin)
+-> registration page 
+-> book adding page is only for the user
+-> admin can delete the books 
+-> user can view the books available
+
+
+
+
+database 
+-> we have used MySQL in this project as it is a relational database so we can store the data in tabular form and keep records of the books
+-> we have created i relation for books information(such as bookid, isbn, etc)
+-> another relation for the user(userid, name, role(admin, user))
+-> another relation for the transaction (that which user borrowed what book)
+
+
+backend 
+-> we will create a http server using the node and express.js
+-> we will use the MySQL library of the node.js and express.js for the connectivity with database
+-> 
+
+
+
+
+for the /dashboard route
+-> we have to create a profile page for user and a dashboard for the admin 
+-> add add the functionality for the admin to add, delete the books
+-> implementation of the dashboard for the admin 	
+	: first we will take the email(because we have encapsulated the email in the token) of the person from the token 
+		- for retrieving the email for the token we have change our token verify function.
+	: then we will query database to get the role of the person with email provided 
+	: then we will check if it is user or admin and if admin then allow access else restrict the access
+-> design the dashboard for the admin with the functionality to add delete and see the users in the library
+
+for the /logout route
+-> we will create the /logout route 
+-> we will clear the token we store in the browser's cookie 
+-> then after this we will redirect to the login page
+
+
+
+-> home page is created using the bootstrap and html 
+-> it has 2 main section 
+	- for profile 
+	- for search books 
+	- both routes should be protected means it should only open when the user is logged in
+	- when the home page will be loaded it will only show the dashboard section in vabbar is admin is logged in else not
+
+
+
+-> for the profile section we are using the design form other sources -> and changing the code according to our use	
+	- now we have to query the database to retrieve all the books issues by the user 
+	- from the email of the user we will get the id of the used 
+	- then from the transactions we have to pick all the bookid that are issued by the userid = user.id
+	- now from the books table we will take the name of the book with the bookid
+	- we have to perform join operation
+	- we will join the three table user transaction bookisbn
+	- 
+
+
+
+-> create a about route
+	- that store a simple information about the project
+
+
+
+
+
+
+
+
+
+
+
+
