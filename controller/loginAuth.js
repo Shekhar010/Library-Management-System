@@ -23,13 +23,13 @@ const db = mysql.createConnection({
 
 // for the route login we have to perform .. 
 exports.login = (request, response) => {
-    console.log("login done");
+    console.log("login in process");
     // store the credentials entered by the user 
     const email = request.body.email;
     const password = request.body.password;
 
 
-    // also check if the user tries to login if stil the credentials are empty
+    // also check if the user tries to login if still the credentials are empty
     if (!email || !password) {
         return response.render('login', {
             message: 'email or password cant be empty'
@@ -42,13 +42,13 @@ exports.login = (request, response) => {
     db.query('SELECT email, password, role FROM users WHERE email = ?', [email], (error, results) => {
         // check if any error occured during the query
         if (error) {
-            response.render('login', {
+            return response.render('login', {
                 message: 'error occured please try again'
             });
         }
         // if email not in the data base 
         if (results.length === 0) {
-            response.render('login', {
+            return response.render('login', {
                 message: 'email does not exist'
             });
         }

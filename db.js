@@ -91,6 +91,15 @@ app.use('/deleteBook', require('./Routes/deletebook'));
 // // 4. route to add a book in the table
 app.use('/addBook', require('./Routes/addbook'));
 
+// route for the search book page
+app.use('/search', require('./Routes/searchBook'));
+
+// route to get the book if available
+app.use('/booksearch', require('./Routes/bookSearch'));
+
+// route for the book issue request
+app.use('/requestBookIssue', require('./Routes/requestBook'));
+
 // route for logout
 app.get('/logout', (request, response)=>{
     response.clearCookie('jwt', {

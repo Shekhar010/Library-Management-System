@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Home</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="/home.css" />
+</head>
+
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="/">Library</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
+                    {{!-- if the person logged in is the admin then display the dashboard --}}
+                    {{#if role}}
+                    <li class="nav-item"><a class="nav-link" href="/dashboard">dashboard</a></li>
+                    {{/if}}
+                    <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder text-white mb-2">Search your favourite book</h1>
+                        <p class="lead text-white-50 mb-4">- enter the book name below</p>
+                        <form class="" action="/booksearch" method="post">
+                            <div class="form-floating">
+                                <input type="text" name="booknameorisbn" class="form-control" id="floatingInput"
+                                    placeholder="book name or isbn" required>
+                                <label for="floatingInput" required>Book name or ISBN</label>
+                            </div>
+                            <br>
+                            {{!-- button for the post --}}
+                            <button class="btn btn-primary w-100 py-2" type="submit">Search</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{!-- if the book is found then populate the book --}}
+
+
+    {{!--only for the testing purpose --}}
+    {{!-- {{#if message}}
+    <div class="alert">
+        <center>
+            <h4>{{bookid}}</h4>
+            <h4>{{isbn}}</h4>
+            <h4>{{bookAuthor}}</h4>
+            <h4>{{bookTitle}}</h4>
+        </center>
+    </div>
+    {{/if}} --}}
+
+    <br>
+    {{!-- section for the book section --}}
+    {{#if bookid}}
+
+    <center>
+        <div class="about-card">
+            <!-- About Section Card -->
+            <div class="col-lg-6 col-xl-4">
+                <div class="card mb-5 mb-xl-0">
+                    <div class="card-body p-5">
+                        <div class="small text-uppercase fw-bold text-muted">Book Found</div>
+                        <div class="mb-3">
+                            <span class="display-4 fw-bold">Details</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary"></i>Book id : {{bookid}}
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary"></i>Title : {{bookTitle}}
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary"></i>Author : {{bookAuthor}}
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary"></i>ISBN : {{isbn}}
+                            </li>
+                        </ul>
+                        <div class="d-grid">
+                            <a class="btn btn-outline-primary" href="/requestBookIssue?isbn={{isbn}}">Issue book</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+    {{else}}
+    <center>
+        <div class="about-card">
+            <!-- About Section Card -->
+            <div class="col-lg-6 col-xl-4">
+                <div class="card mb-5 mb-xl-0">
+                    <div class="card-body p-5">
+                        <div class="mb-3">
+                            {{#if messageOne}}
+                            <span class="display-4 fw-bold">{{messageOne}}</span>
+                            {{else}}
+                            <span class="display-4 fw-bold">No book found !!</span>
+                            {{/if}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+    {{/if}}
+
+    <br>
+    {{#if messageForRequest}}
+    {{/if}}
+    <br>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container px-5">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+</html>
