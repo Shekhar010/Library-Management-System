@@ -30,8 +30,10 @@
           <li class="nav-item"><a class="nav-link" href="/logout">logout</a></li>
           {{!-- if the person logged in is the admin then display the dashboard --}}
           {{#if role}}
-            <li class="nav-item"><a class="nav-link" href="/dashboard">dashboard</a></li>
-            {{/if}}
+          <li class="nav-item"><a class="nav-link" href="/dashboard">dashboard</a></li>
+          {{/if}}
+
+          <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
           <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
         </ul>
       </div>
@@ -63,18 +65,19 @@
           <h2 class="h4 fw-bolder">Efficient Book Management</h2>
           <p>Easily manage a comprehensive catalog of books, including adding, updating, or removing titles. Track
             availability in real-time and organize resources seamlessly..</p>
-          <a class="text-decoration-none" href="#!">
-            Call to action
+          <a class="text-decoration-none" href="/search">
+            books
             <i class="bi bi-arrow-right"></i>
           </a>
         </div>
         <div class="col-lg-4 mb-5 mb-lg-0">
           <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
           <h2 class="h4 fw-bolder">User Account Management</h2>
-          <p>Provide personalized user accounts for students and staff. Allow users to view borrowed books, track due
-            dates, and renew or reserve books with just a few clicks..</p>
-          <a class="text-decoration-none" href="#!">
-            Call to action
+          <p>Provide personalized user accounts for students and staff. Allow users to view borrowed books, track issued
+            books
+            , request books with just a few clicks..</p>
+          <a class="text-decoration-none" href="/profile">
+            Profile
             <i class="bi bi-arrow-right"></i>
           </a>
         </div>
@@ -82,9 +85,9 @@
           <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
           <h2 class="h4 fw-bolder">Admin Dashboard</h2>
           <p>Empower administrators with an intuitive dashboard to oversee library operations, manage user roles, and
-            generate insightful reports for better decision-making.</p>
-          <a class="text-decoration-none" href="#!">
-            Call to action
+            generate insightful reports for better decision-making. ONLY FOR ADMIN</p>
+          <a class="text-decoration-none" href="/dashboard">
+            Dashboard
             <i class="bi bi-arrow-right"></i>
           </a>
         </div>
@@ -165,7 +168,7 @@
           </div>
         </div>
 
-        
+
       </div>
     </div>
   </section>

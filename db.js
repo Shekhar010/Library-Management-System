@@ -100,6 +100,12 @@ app.use('/booksearch', require('./Routes/bookSearch'));
 // route for the book issue request
 app.use('/requestBookIssue', require('./Routes/requestBook'));
 
+// route for the admin to see the issue request from the users 
+app.use('/dashboard', require('./Routes/dashboardAuthentication'));
+
+// route to fullfile the issue requst of the user and grant the issue
+app.use('/grantIssue', require('./Routes/grantIssue'));
+
 // route for logout
 app.get('/logout', (request, response)=>{
     response.clearCookie('jwt', {

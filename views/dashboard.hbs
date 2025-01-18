@@ -108,6 +108,7 @@
                         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
                         <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
                         <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
                     </ul>
                 </div>
@@ -174,6 +175,8 @@
                                 Book</a></li>
                         <li class="nav-item"><a class="nav-link" onclick="showSection('addBookSection')">Add New
                                 Book</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/dashboard/issueRequest">Issue Request
+                            </a></li>
                     </ul>
                 </div>
             </div>
@@ -222,7 +225,7 @@
                         <form class="" action="/deleteUser" method="post">
                             <div class="form-floating">
                                 <input type="text" name="email" class="form-control" id="floatingInput"
-                                    placeholder="User Email" required >
+                                    placeholder="User Email" required>
                                 <label for="floatingInput" required>Email</label>
                             </div>
                             {{!-- button for the post --}}
@@ -247,7 +250,7 @@
                         <form class="" action="/deleteBook" method="post">
                             <div class="form-floating">
                                 <input type="text" name="ISBN" class="form-control" id="floatingInput"
-                                    placeholder="User Email" required >
+                                    placeholder="User Email" required>
                                 <label for="floatingInput">ISBN</label>
                             </div>
                             {{!-- button for the post --}}
@@ -296,7 +299,7 @@
 
         <div class="messageBox">
             {{#if message}}
-                <h4 class="alert alert-success mt-4">{{message}}</h4>
+            <h4 class="alert alert-success mt-4">{{message}}</h4>
             {{/if}}
         </div>
         {{!-- javascript to show the section as needed --}}

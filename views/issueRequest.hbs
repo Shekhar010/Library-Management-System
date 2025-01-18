@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Admin's Dashboard</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="/home.css" />
+    <style>
+        .container-fluid {
+            padding-top: 50px;
+        }
+
+        .tab-content {
+            margin-top: 20px;
+        }
+
+        .tab-pane {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .card-body {
+                {
+                    {
+                    !-- padding-top: 20px;
+                    --
+                }
+            }
+        }
+
+        .card-header {
+            background-color: #f1f1f1;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .tab-link {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .row.gx-5 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .col-sm-3 {
+            text-align: right;
+        }
+
+        .col-sm-9 {
+            text-align: left;
+        }
+
+        .about-card {
+            margin-top: 20px;
+        }
+
+        .display-4 {
+            font-size: 2rem;
+        }
+
+        .card-body p {
+            font-size: 1.1rem;
+        }
+
+        .card-header {
+            background-color: #f1f1f1;
+        }
+
+        #floatingInput {
+            margin-bottom: 10px;
+        }
+
+        .card {
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+
+        footer {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/">Library</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Profile Section (Header Style) -->
+        <header class="bg-dark py-5">
+            <div class="container px-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="text-center my-5">
+                            <h1 class="display-5 fw-bolder text-white mb-2">Welcome Admin </h1>
+                            <p class="lead text-white-50 mb-4">– Manage the user book issue request
+                                below.</p>
+                            <div class="d-flex flex-column align-items-center text-center">
+                                {{!-- name of the admin --}}
+                                <div class="mt-3">
+                                    {{#if username}}
+                                    <h4 class="text-white">{{username}}</h4>
+                                    {{/if}}
+                                </div>
+                            </div>
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center mt-4">
+                                <a class="btn btn-outline-light btn-lg px-4" href="/logout">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="messageBox">
+            {{#if message}}
+            <h4 class="alert alert-success mt-4">{{message}}</h4>
+            {{/if}}
+        </div>
+
+        {{!-- iterate the request and disply them --}}
+
+        {{#if issueRequest}}
+        {{#each issueRequest }}
+        <!-- Search Books Section Card -->
+        <div class="col-lg-6 col-xl-4">
+            <div class="card mb-5 mb-xl-0">
+                <div class="card-body p-5">
+                    <div class="small text-uppercase fw-bold text-muted">.............</div>
+                    <div class="mb-3">
+                        <span class="display-4 fw-bold">PENDING REQUEST</span>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2">
+                            <i class="bi bi-check text-primary"></i>
+                            user-email : {{email}}
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check text-primary"></i>
+                            book-isbn : {{isbn}}
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check text-primary"></i>
+                            book-name : {{title}}
+                        </li>
+
+                    </ul>
+                    <div class="d-grid">
+                        <a class="btn btn-outline-primary" href="/grantIssue?isbn={{isbn}}">Issue</a>
+                    </div>
+                    <style>
+                        .d-grid {
+                            margin-bottom: 5px;
+                            background-color: ;
+                        }
+                    </style>
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+
+
+
+
+
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-5">
+                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+            </div>
+        </footer>
+
+
+        <!-- Bootstrap JS and Dependencies -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    </center>
+</body>
+
+
+</html>

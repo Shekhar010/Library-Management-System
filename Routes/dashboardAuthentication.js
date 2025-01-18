@@ -16,4 +16,9 @@ const verifyToken = require('../middle_wares/verifyToken');
 router.get('/', verifyToken.verifyToken, controller.dashboard);
 
 
+// controller for the issue request 
+const controllerIssureRequest = require('../controller/issueBookRequest');
+router.get('/issueRequest', verifyToken.verifyToken, controllerIssureRequest.issueRequest);
+
+
 module.exports = router;

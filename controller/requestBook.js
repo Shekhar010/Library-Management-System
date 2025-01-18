@@ -34,6 +34,7 @@ exports.issueRequestBook = (request, response) => {
     const ISBN = request.query.isbn;
     console.log(ISBN);
 
+
     // before inserting the record in the table check if the user has already requested or not
     db.query('SELECT * FROM issueRequest WHERE email = ? AND isbn = ?', [email, ISBN], (error, result1) => {
         if (error) {
@@ -51,17 +52,36 @@ exports.issueRequestBook = (request, response) => {
             // means no such request was earlier made 
             // now query it
             // query the database and in the issue request table enter the request
-            db.query('INSERT INTO issueRequest (email, isbn) values (?, ?)', [email, ISBN], (error, result) => {
+
+
+            // also search the book name in the bookisbn table to insert with other values
+            db.query('SELECT original_title FROM bookisbn WHERE isbn = ?', [ISBN], (error, result2) => {
                 if (error) {
                     return response.render('search', {
-                        messageOne: "error occured so sorry"
+                        messageOne: "book name not found"
                     })
                 }
 
-                // if succesffully inserted 
-                return response.render('search', {
-                    messageOne: "Successfully request send .."
-                })
+                // if no error 
+                // print the name of book to test
+                const STATUS = "Pending";
+                const bookname = result2[0].original_title ;
+                console.log(bookname);
+
+
+
+                db.query('INSERT INTO issueRequest (email, isbn, status, title) values (?, ?, ?, ?)', [email, ISBN, STATUS, bookname], (error, result) => {
+                    if (error) {
+                        return response.render('search', {
+                            messageOne: "error occured so sorry"
+                        })
+                    }
+
+                    // if succesffully inserted 
+                    return response.render('search', {
+                        messageOne: "Successfully request send .."
+                    })
+                });
             });
         }
     })
